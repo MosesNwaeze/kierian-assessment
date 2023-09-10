@@ -22,7 +22,7 @@ module.exports = (req, res) => {
            return res.status(404).json("User not found");
        }
    }else{
-    return res.status(401).json("Unauthorized");
+    return res.status(401).json("Login credential not correct");
    }
 
 }
