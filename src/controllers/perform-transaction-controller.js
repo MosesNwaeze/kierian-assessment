@@ -36,6 +36,7 @@ module.exports = async (req,res)=>{
          return res.status(403).json('Wallet balance is low');
       }
 
+
       const userOTP = otps.find(otp => otp.userId === userId && otp.expired === false);
       if(!userOTP){
          return res.status(404).json('OTP not found');
@@ -43,13 +44,17 @@ module.exports = async (req,res)=>{
          return res.status(403).json('OTP not correct');
       }
 
+      const receiverWallet = wallets.find(wallet => wallet.id === walletId);
+      if(!receiverWallet){
+         return res.status(404).json('Receiver wallet not found');
+      }
 
       senderWallet.currentAmount = senderWallet.currentAmount - amount;
       const walletIndex = wallets.findIndex(wallet => wallet.userid === userId && wallet.userPin === pin);
       wallets.splice(walletIndex,1,senderWallet)
 
 
-      const receiverWallet = wallets.find(wallet => wallet.id === walletId);
+
       receiverWallet.currentAmount = receiverWallet.currentAmount + amount;
       const receiverWalletIndex = wallets.findIndex(wallet => wallet.id === walletId);
       wallets.splice(receiverWalletIndex,1,receiverWallet)
