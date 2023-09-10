@@ -6,8 +6,8 @@
 3. create a .env file at the root of the application
 4. add entry for JWT_SECRETE and SERVER_PORT on the .env file created(JWT_SECRETE is any secret string and SERVER_PORT is any 4 digit number)
 5. Login with the following credential on postman <br />
-     endpoint= POST /api/v1/login
-    "userId": "c231139d-1369-4a3e-975f-c0e0dcc0ab42",
+     endpoint= POST /api/v1/login  <br />
+    "userId": "c231139d-1369-4a3e-975f-c0e0dcc0ab42"  <br />
     "password": "P@ssw0rd!"
 6. copy the response token
 7. use the response token to make subsequent request by hitting the following endpoint<br />
